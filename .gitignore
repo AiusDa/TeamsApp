@@ -2,5 +2,8 @@
 node_modules
 build
 
+# Logs
+yarn-error.log
+
 # miscellaneous
 yarn.lock
