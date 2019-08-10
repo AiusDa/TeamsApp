@@ -1,0 +1,6 @@
+# Project files
+node_modules
+build
+
+# miscellaneous
+yarn.lock
