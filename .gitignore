@@ -6,4 +6,5 @@ build
 yarn-error.log
 
 # miscellaneous
+.env
 yarn.lock
