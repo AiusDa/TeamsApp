@@ -6,7 +6,5 @@ export const createUserSchema = Joi.object().keys({
     .email()
     .required(),
   image: Joi.string(),
-  team_id: Joi.number()
-    .integer()
-    .required()
+  teamId: Joi.string().required()
 });
