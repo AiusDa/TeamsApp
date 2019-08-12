@@ -4,6 +4,7 @@ import * as mongoose from 'mongoose';
 
 import { ROOT_ROUTER } from './routes';
 import { CONFIG } from './lib/config';
+import { routeNotImplemented } from './middlewares/routeNotImplemented';
 
 const app = express();
 
@@ -11,6 +12,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(ROOT_ROUTER);
+app.use(routeNotImplemented);
 
 const { database, server } = CONFIG;
 
