@@ -1,4 +1,4 @@
-import { DocumentQuery } from 'mongoose';
+import { DocumentQuery, Query } from 'mongoose';
 
 import { TeamModel, ITeamModel } from '../../models/team.model';
 
@@ -15,5 +15,14 @@ export class TeamController {
     return TeamModel.create({
       name: data.name
     });
+  }
+
+  public deleteById(
+    id: string
+  ): Query<{
+    ok?: number;
+    n?: number;
+  }> {
+    return TeamModel.deleteOne({ id });
   }
 }

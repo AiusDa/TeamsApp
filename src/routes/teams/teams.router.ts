@@ -62,3 +62,17 @@ TEAMS_ROUTER.get(
     }
   }
 );
+
+TEAMS_ROUTER.delete(
+  '/:id',
+  async (req: express.Request, res: express.Response) => {
+    const { id } = req.params;
+    try {
+      const teamCtrl = new TeamController();
+      const result = await teamCtrl.deleteById(id);
+      res.send(result);
+    } catch (error) {
+      res.send(error);
+    }
+  }
+);
