@@ -17,12 +17,14 @@ export class TeamController {
     });
   }
 
-  public deleteById(
-    id: string
-  ): Query<{
-    ok?: number;
-    n?: number;
-  }> {
-    return TeamModel.deleteOne({ id });
+  public updateById(
+    id: string,
+    name: string
+  ): DocumentQuery<ITeamModel, ITeamModel, {}> {
+    return TeamModel.findByIdAndUpdate(id, { name });
+  }
+
+  public deleteById(id: string): DocumentQuery<ITeamModel, ITeamModel, {}> {
+    return TeamModel.findOneAndDelete(id);
   }
 }

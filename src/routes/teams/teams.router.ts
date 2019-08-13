@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { createValidator } from 'express-joi-validation';
 
-import { createTeamSchema } from './teams.schemas';
+import { createTeamSchema, updateTeamSchema } from './teams.schemas';
 import { TeamController } from '../../controllers/team/team.controller';
 import { MemberController } from '../../controllers/member/member.controller';
 
@@ -57,6 +57,25 @@ TEAMS_ROUTER.get(
       const memberCtrl = new MemberController();
       const members = await memberCtrl.findByTeamId(id);
       res.send(members);
+    } catch (error) {
+      res.send(error);
+    }
+  }
+);
+
+TEAMS_ROUTER.put(
+  '/:id',
+  validator.body(updateTeamSchema),
+  async (req: express.Request, res: express.Response) => {
+    const { id } = req.params;
+    const { name } = req.body;
+
+    console.log({ id });
+
+    try {
+      const teamCtrl = new TeamController();
+      const result = await teamCtrl.updateById(id, name);
+      res.send(result);
     } catch (error) {
       res.send(error);
     }
